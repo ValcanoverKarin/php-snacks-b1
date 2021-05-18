@@ -33,7 +33,7 @@
     ];
 
     //var_dump($matches);
-
+    
 
     // Snack 2
     // Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) 
@@ -44,6 +44,21 @@
     $mail = $_GET["mail"];
     $age = $_GET["age"];
 
+    // Controllo che name sia più lungo di 3 caratteri 
+    if (strlen($name) <= 3) {
+        echo 'Accesso negato';
+    }
+    // Controllo che la mail contenga un punto e una chiocciola
+    elseif (strpos($mail, '@') === false || strpos($mail, '.') === false) {
+        echo 'Accesso negato';
+    }
+    // Controllo che age sia un numero
+    elseif (!is_numeric($age)) {
+        echo 'Accesso negato';
+    }
+    else {
+        echo 'Accesso riuscito';
+    }
 
 ?>
 
